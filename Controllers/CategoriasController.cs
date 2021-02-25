@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using APICatalogo.Context;
 using APICatalogo.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,20 +21,38 @@ namespace APICatalogo.Controllers
             
         }
 
+        [HttpGet("produtos")]
+        public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos()
+        {
+            return _contexto.Categorias.AsNoTracking().Include(x => x.Produtos).ToList();
+        }
+
         [HttpGet]
         public ActionResult<IEnumerable<Categoria>> Get()
         {
-            return _contexto.Categorias.AsNoTracking().ToList();
+            try{
+                return _contexto.Categorias.AsNoTracking().ToList();
+            }
+            catch (Exception){
+                return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao tentar obter a categoria do banco de dados.");
+            }            
         }
 
         [HttpGet("{id}", Name="ObterCategoria")]
         public ActionResult<Categoria> Get(int id)
         {
-            var categoria = _contexto.Categorias.AsNoTracking().FirstOrDefault(c => c.CategoriaId.Equals(id));
-            if (categoria == null)
-                return NotFound();
+            try
+            {
+                var categoria = _contexto.Categorias.AsNoTracking().FirstOrDefault(c => c.CategoriaId.Equals(id));
+                if (categoria == null)
+                    return NotFound($"A categoria com id ={id} não foi encontrada");
 
-            return categoria;
+                return categoria;
+            }
+            catch (Exception)
+            {                
+                return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao tentar obter a categoria do banco de dados.");
+            }            
         }
 
         [HttpPost]
@@ -47,13 +67,21 @@ namespace APICatalogo.Controllers
 
         [HttpPut("{id}")]
         public ActionResult Put(int id,[FromBody] Categoria categoria)
-        {            
-            if (id != categoria.CategoriaId)            
-                return BadRequest(categoria);            
+        {           
+            try
+            {
+                if (id != categoria.CategoriaId)            
+                    return BadRequest($"Não foi possível atualizar a categoria com o Id={id}");
             
-            _contexto.Entry(categoria).State = EntityState.Modified;
-            _contexto.SaveChanges();
-            return Ok();           
+                _contexto.Entry(categoria).State = EntityState.Modified;
+                _contexto.SaveChanges();
+                return Ok($"Categoria com Id={id} foi atualizada com sucesso"); 
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao tentar atualizar a categoria do banco de dados.");    
+            } 
+                      
         }      
 
         [HttpDelete("{id}")]     
