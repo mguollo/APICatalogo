@@ -24,7 +24,7 @@ namespace APICatalogo.Controllers
             .ToList();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name="ObterProduto")]
         public ActionResult<Produto> Get(int id)
         {
             var produto = _contexto.Produtos
@@ -37,5 +37,42 @@ namespace APICatalogo.Controllers
             }
             return produto;
         }
+
+        [HttpPost]
+        public IActionResult Post([FromBody] Produto produto)
+        {
+            _contexto.Produtos.Add(produto);
+            _contexto.SaveChanges();
+
+            return new CreatedAtRouteResult("ObterProduto", 
+                new {id = produto.ProdutoId}, produto);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] Produto produto)
+        {
+            if (id != produto.ProdutoId)
+                //return BadRequest("Código do produto diferente do objeto enviado.");
+                return BadRequest(produto);
+
+            _contexto.Entry(produto).State = EntityState.Modified;
+            _contexto.SaveChanges();
+            return Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            //var produto = _contexto.Produtos.FirstOrDefault(c => c.ProdutoId == id);
+            var produto = _contexto.Produtos.Find(id);
+
+            if (produto == null)
+                return NotFound();
+
+            _contexto.Produtos.Remove(produto);
+            _contexto.SaveChanges();
+            return Ok();
+        }
+
     }
 }
