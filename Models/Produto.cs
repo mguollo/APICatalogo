@@ -1,10 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace APICatalogo.Models
 {
     [System.ComponentModel.DataAnnotations.Schema.Table("Produtos")]
-    public class Produto
+    public class Produto : IValidatableObject
     {
         [Key]
         public int ProdutoId { get; set; }            
@@ -23,5 +24,27 @@ namespace APICatalogo.Models
         public DateTime DataCadastro { get; set; }
         public Categoria Categoria { get; set; }        
         public int CategoriaId { get; set; }
+
+       public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (!string.IsNullOrEmpty(this.Nome))               
+            {
+                var primeiraLetra = this.Nome.ToString()[0].ToString();
+                if (primeiraLetra != primeiraLetra.ToUpper())
+                    yield return new ValidationResult("A primeira letra deve ser maiúscula.",
+                                            new[]
+                                            {
+                                                nameof(this.Nome)
+                                            });
+            }
+            if (this.Estoque <= 0)
+            {
+                yield return new ValidationResult("O estoque deve ser maior que zero",
+                    new[]
+                    {
+                        nameof(this.Estoque)
+                    });
+            }            
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using APICatalogo.Context;
 using APICatalogo.Models;
+using APICatalogo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,12 @@ namespace APICatalogo.Controllers
         {
             _contexto = contexto;
             
+        }
+
+        [HttpGet("saudacao/{nome}")]
+        public ActionResult<string> GetSaudacao([FromServices] IMeuServico meuservico, string nome)
+        {
+            return meuservico.Saudacao(nome);
         }
 
         [HttpGet("produtos")]

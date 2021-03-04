@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using APICatalogo.Validations;
 
 namespace APICatalogo.Models
 {
@@ -12,6 +13,7 @@ namespace APICatalogo.Models
         public int CategoriaId { get; set; }
         [Required]        
         [MaxLength(80)]
+        [PrimeiraLetraMaiuscula]
         public string Nome { get; set; }    
         [Required]        
         [MaxLength(300)]

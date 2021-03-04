@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using APICatalogo.Context;
+using APICatalogo.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +32,8 @@ namespace APICatalogo
             string urlConexaoSQL = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(urlConexaoSQL));
+
+            services.AddTransient<IMeuServico, MeuServico>();
 
             services.AddControllers()
                 .AddNewtonsoftJson(options =>

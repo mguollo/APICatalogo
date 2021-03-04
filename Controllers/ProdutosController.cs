@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using APICatalogo.Context;
 using APICatalogo.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -25,11 +26,11 @@ namespace APICatalogo.Controllers
         }
 
         [HttpGet("{id}", Name="ObterProduto")]
-        public ActionResult<Produto> Get(int id)
+        public async Task<ActionResult<Produto>> Get(int id)
         {
-            var produto = _contexto.Produtos
+            var produto = await _contexto.Produtos
                 .AsNoTracking()
-                .FirstOrDefault(c => c.ProdutoId.Equals(id));
+                .FirstOrDefaultAsync(c => c.ProdutoId.Equals(id));
 
             if  (produto == null)
             {
