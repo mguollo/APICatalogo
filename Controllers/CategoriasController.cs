@@ -22,6 +22,13 @@ namespace APICatalogo.Controllers
             
         }
 
+        [HttpGet("/TaxaJuros")]
+        public ActionResult GetTaxaJuros()
+        {   
+            var resultado = new {TaxaJuros = 0.01};
+            return Ok(resultado);
+        }
+
         [HttpGet("saudacao/{nome}")]
         public ActionResult<string> GetSaudacao([FromServices] IMeuServico meuservico, string nome)
         {
