@@ -5689,11 +5689,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projetos\\webapi_essential\\APICatalogo\\APICatalogo.csproj",
+      "projectUniqueName": "c:\\Projetos\\webapi_essential\\APICatalogo\\APICatalogo.csproj",
       "projectName": "APICatalogo",
-      "projectPath": "C:\\Projetos\\webapi_essential\\APICatalogo\\APICatalogo.csproj",
+      "projectPath": "c:\\Projetos\\webapi_essential\\APICatalogo\\APICatalogo.csproj",
       "packagesPath": "C:\\Users\\Murilo\\.nuget\\packages\\",
-      "outputPath": "C:\\Projetos\\webapi_essential\\APICatalogo\\obj\\",
+      "outputPath": "c:\\Projetos\\webapi_essential\\APICatalogo\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Murilo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5763,7 +5763,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

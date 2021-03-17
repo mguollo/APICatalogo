@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using APICatalogo.Context;
+using APICatalogo.Filters;
 using APICatalogo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,17 +19,22 @@ namespace APICatalogo.Controllers
         {
             _contexto = contexto;
         }
+
         [HttpGet]
-        public ActionResult<IEnumerable<Produto>> Get()
+        [ServiceFilter(typeof(ApiLoggingFilter))]
+        public async Task<ActionResult<IEnumerable<Produto>>> Get()
         {
-            return _contexto.Produtos
+            return await _contexto.Produtos
             .AsNoTracking()
-            .ToList();
+            .ToListAsync();
         }
 
+        [ServiceFilter(typeof(ApiLoggingFilter2))]
         [HttpGet("{id}", Name="ObterProduto")]
         public async Task<ActionResult<Produto>> Get(int id)
         {
+            throw new Exception("Expcetion ao retornar produto pelo ID");
+            
             var produto = await _contexto.Produtos
                 .AsNoTracking()
                 .FirstOrDefaultAsync(c => c.ProdutoId.Equals(id));

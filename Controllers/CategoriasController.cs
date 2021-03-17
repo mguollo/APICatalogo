@@ -7,6 +7,7 @@ using APICatalogo.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace APICatalogo.Controllers
 {
@@ -15,11 +16,21 @@ namespace APICatalogo.Controllers
     public class CategoriasController : ControllerBase
     {
         private readonly AppDbContext _contexto;
+        private readonly IConfiguration _configuration;
 
-        public CategoriasController(AppDbContext contexto)        
+        public CategoriasController(AppDbContext contexto, IConfiguration config)        
         {
             _contexto = contexto;
-            
+            _configuration = config;            
+        }
+
+        [HttpGet("autor")]
+        public string GetAutor()
+        {
+           var autor = _configuration["autor"];
+           var conexao = _configuration["ConnectionStrings:DefaultConnection"];
+
+           return $"Autor: {autor} Conexão : {conexao}";
         }
 
         [HttpGet("/TaxaJuros")]
