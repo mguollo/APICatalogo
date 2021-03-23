@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 
 namespace APICatalogo.Controllers
 {
@@ -17,20 +18,23 @@ namespace APICatalogo.Controllers
     {
         private readonly AppDbContext _contexto;
         private readonly IConfiguration _configuration;
+        private readonly ILogger _logger;
 
-        public CategoriasController(AppDbContext contexto, IConfiguration config)        
+        public CategoriasController(AppDbContext contexto, IConfiguration config, ILogger<CategoriasController> logger)        
         {
             _contexto = contexto;
             _configuration = config;            
+            _logger = logger;
         }
 
         [HttpGet("autor")]
-        public string GetAutor()
+        public string GetAutor()        
         {
-           var autor = _configuration["autor"];
-           var conexao = _configuration["ConnectionStrings:DefaultConnection"];
+            _logger.LogInformation("=======================GET API AUTOR=====================================");
+            var autor = _configuration["autor"];
+            var conexao = _configuration["ConnectionStrings:DefaultConnection"];
 
-           return $"Autor: {autor} Conexão : {conexao}";
+            return $"Autor: {autor} Conexão : {conexao}";
         }
 
         [HttpGet("/TaxaJuros")]
@@ -49,6 +53,7 @@ namespace APICatalogo.Controllers
         [HttpGet("produtos")]
         public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos()
         {
+            _logger.LogInformation("=======================GET api/categorias/produtos=====================================");
             return _contexto.Categorias.AsNoTracking().Include(x => x.Produtos).ToList();
         }
 

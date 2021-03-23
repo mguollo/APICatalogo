@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Q1qwFoZWsJrb7CPM7HYhHJ3P2hzTq0UhrFqzQVsvFt6JksmJn2GWODen7lwv3frrYDDfP5ZEu5VPXTfvZ5bfSg==",
+  "dgSpecHash": "sRCTajodH5WgQcy8z5FF+M3c0/GVSVVQ0k83Zi//9NMv4l/zdmF9ZI/DpsL4WSUKilft1avIEaa01kAsRnkbzQ==",
   "success": true,
-  "projectFilePath": "C:\\Projetos\\webapi_essential\\APICatalogo\\APICatalogo.csproj",
+  "projectFilePath": "c:\\Projetos\\webapi_essential\\APICatalogo\\APICatalogo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Murilo\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Murilo\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.3\\microsoft.aspnetcore.jsonpatch.5.0.3.nupkg.sha512",
