@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Projetos\\webapi_essential\\APICatalogo\\APICatalogo.csproj": {}
+    "C:\\Projetos\\webapi_essential\\APICatalogo\\APICatalogo.csproj": {}
   },
   "projects": {
-    "c:\\Projetos\\webapi_essential\\APICatalogo\\APICatalogo.csproj": {
+    "C:\\Projetos\\webapi_essential\\APICatalogo\\APICatalogo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Projetos\\webapi_essential\\APICatalogo\\APICatalogo.csproj",
+        "projectUniqueName": "C:\\Projetos\\webapi_essential\\APICatalogo\\APICatalogo.csproj",
         "projectName": "APICatalogo",
-        "projectPath": "c:\\Projetos\\webapi_essential\\APICatalogo\\APICatalogo.csproj",
+        "projectPath": "C:\\Projetos\\webapi_essential\\APICatalogo\\APICatalogo.csproj",
         "packagesPath": "C:\\Users\\Murilo\\.nuget\\packages\\",
-        "outputPath": "c:\\Projetos\\webapi_essential\\APICatalogo\\obj\\",
+        "outputPath": "C:\\Projetos\\webapi_essential\\APICatalogo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Murilo\\AppData\\Roaming\\NuGet\\NuGet.Config",
