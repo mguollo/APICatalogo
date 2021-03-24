@@ -3,7 +3,7 @@ using APICatalogo.Models;
 
 namespace APICatalogo.Repository.API
 {
-    interface IProdutoRepository : IRepository<Produto>
+    public interface IProdutoRepository : IRepository<Produto>
     {
         IEnumerable<Produto> GetProdutosPorPreco();        
     }

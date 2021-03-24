@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using APICatalogo.Context;
 using APICatalogo.Filters;
 using APICatalogo.Models;
+using APICatalogo.Repository.API;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,30 +15,33 @@ namespace APICatalogo.Controllers
     [ApiController]
     public class ProdutosController : ControllerBase
     {
-        private readonly AppDbContext _contexto;
-        public ProdutosController(AppDbContext contexto)
+        //private readonly AppDbContext _contexto;
+        private readonly IUnitOfWork _uof;
+        public ProdutosController(IUnitOfWork uof)
         {
-            _contexto = contexto;
+            _uof = uof;
+        }
+
+        [HttpGet("produtospreco")]
+        public ActionResult<IEnumerable<Produto>> GetProdutosPreco()
+        {
+            return _uof.ProdutoRepository.GetProdutosPorPreco().ToList();
         }
 
         [HttpGet]
         [ServiceFilter(typeof(ApiLoggingFilter))]
-        public async Task<ActionResult<IEnumerable<Produto>>> Get()
+        public ActionResult<IEnumerable<Produto>> Get()
         {
-            return await _contexto.Produtos
-            .AsNoTracking()
-            .ToListAsync();
+            return _uof.ProdutoRepository.Get().ToList();
         }
 
         [ServiceFilter(typeof(ApiLoggingFilter2))]
         [HttpGet("{id}", Name="ObterProduto")]
-        public async Task<ActionResult<Produto>> Get(int id)
+        public ActionResult<Produto> Get(int id)
         {
-            throw new Exception("Expcetion ao retornar produto pelo ID");
+            //throw new Exception("Expcetion ao retornar produto pelo ID");
             
-            var produto = await _contexto.Produtos
-                .AsNoTracking()
-                .FirstOrDefaultAsync(c => c.ProdutoId.Equals(id));
+            var produto = _uof.ProdutoRepository.GetById(c => c.ProdutoId.Equals(id));
 
             if  (produto == null)
             {
@@ -49,8 +53,8 @@ namespace APICatalogo.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Produto produto)
         {
-            _contexto.Produtos.Add(produto);
-            _contexto.SaveChanges();
+            _uof.ProdutoRepository.Add(produto);
+            _uof.Commit();
 
             return new CreatedAtRouteResult("ObterProduto", 
                 new {id = produto.ProdutoId}, produto);
@@ -63,8 +67,8 @@ namespace APICatalogo.Controllers
                 //return BadRequest("Código do produto diferente do objeto enviado.");
                 return BadRequest(produto);
 
-            _contexto.Entry(produto).State = EntityState.Modified;
-            _contexto.SaveChanges();
+            _uof.ProdutoRepository.Update(produto);
+            _uof.Commit();
             return Ok();
         }
 
@@ -72,13 +76,13 @@ namespace APICatalogo.Controllers
         public IActionResult Delete(int id)
         {
             //var produto = _contexto.Produtos.FirstOrDefault(c => c.ProdutoId == id);
-            var produto = _contexto.Produtos.Find(id);
+            var produto = _uof.ProdutoRepository.GetById(c => c.ProdutoId == id);
 
             if (produto == null)
                 return NotFound();
 
-            _contexto.Produtos.Remove(produto);
-            _contexto.SaveChanges();
+            _uof.ProdutoRepository.Delete(produto);
+            _uof.Commit();
             return Ok();
         }
 

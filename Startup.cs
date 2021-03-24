@@ -6,6 +6,8 @@ using APICatalogo.Context;
 using APICatalogo.Extensions;
 using APICatalogo.Filters;
 using APICatalogo.Logging;
+using APICatalogo.Repository.API;
+using APICatalogo.Repository.Impl;
 using APICatalogo.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -39,6 +41,8 @@ namespace APICatalogo
                 options.UseSqlServer(urlConexaoSQL));
 
             services.AddTransient<IMeuServico, MeuServico>();
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddControllers()
                 .AddNewtonsoftJson(options =>
