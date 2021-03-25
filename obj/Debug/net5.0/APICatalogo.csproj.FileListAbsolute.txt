@@ -63,3 +63,5 @@ C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\appsettings.Staging.js
 C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\AutoMapper.dll
+C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
