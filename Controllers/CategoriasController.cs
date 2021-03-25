@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using APICatalogo.Context;
+using APICatalogo.DTOs;
 using APICatalogo.Models;
 using APICatalogo.Repository.API;
 using APICatalogo.Services;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,19 +23,23 @@ namespace APICatalogo.Controllers
         private readonly IUnitOfWork _uof;
         private readonly IConfiguration _configuration;
         private readonly ILogger _logger;
+        private readonly IMapper _mapper;
 
-        public CategoriasController(IUnitOfWork unitOfWork, /*AppDbContext contexto,*/ IConfiguration config, ILogger<CategoriasController> logger)        
+        public CategoriasController(IUnitOfWork unitOfWork, IMapper mapper, /*AppDbContext contexto,*/ IConfiguration config, ILogger<CategoriasController> logger)        
         {
             //_contexto = contexto;
             _uof = unitOfWork;
+            _mapper = mapper;
             _configuration = config;            
             _logger = logger;
         }
 
         [HttpGet("categoriasProduto")]
-        public ActionResult<IEnumerable<Categoria>> GetCategoriasProduto()
+        public ActionResult<IEnumerable<CategoriaDTO>> GetCategoriasProduto()
         {
-            return _uof.CategoriaRepository.GetCategoriasProdutos().ToList();
+            var categoria = _uof.CategoriaRepository.GetCategoriasProdutos().ToList();
+            var categoriaDTO = _mapper.Map<List<CategoriaDTO>>(categoria);
+            return categoriaDTO;
         }
 
         [HttpGet("autor")]
@@ -60,18 +66,22 @@ namespace APICatalogo.Controllers
         }
 
         [HttpGet("produtos")]
-        public ActionResult<IEnumerable<Categoria>> GetCategoriasProdutos()
+        public ActionResult<IEnumerable<CategoriaDTO>> GetCategoriasProdutos()
         {
             _logger.LogInformation("=======================GET api/categorias/produtos=====================================");
-            return _uof.CategoriaRepository.Get().Include(x => x.Produtos).ToList();
+            var categoria = _uof.CategoriaRepository.Get().Include(x => x.Produtos).ToList();            
+            var categoriaDTO = _mapper.Map<List<CategoriaDTO>>(categoria);
+            return categoriaDTO;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Categoria>> Get()
+        public ActionResult<IEnumerable<CategoriaDTO>> Get()
         {
             try{
                 //return _contexto.Categorias.AsNoTracking().ToList();
-                return _uof.CategoriaRepository.Get().ToList();
+                var categoria = _uof.CategoriaRepository.Get().ToList();
+                var categoriaDTO = _mapper.Map<List<CategoriaDTO>>(categoria);
+                return categoriaDTO;
             }
             catch (Exception){
                 return StatusCode(StatusCodes.Status500InternalServerError, "Erro ao tentar obter a categoria do banco de dados.");
@@ -79,7 +89,7 @@ namespace APICatalogo.Controllers
         }
 
         [HttpGet("{id}", Name="ObterCategoria")]
-        public ActionResult<Categoria> Get(int id)
+        public ActionResult<CategoriaDTO> Get(int id)
         {
             try
             {
@@ -87,7 +97,8 @@ namespace APICatalogo.Controllers
                 if (categoria == null)
                     return NotFound($"A categoria com id ={id} não foi encontrada");
 
-                return categoria;
+                var categoriaDTO = _mapper.Map<CategoriaDTO>(categoria);
+                return categoriaDTO;
             }
             catch (Exception)
             {                
@@ -96,23 +107,27 @@ namespace APICatalogo.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] Categoria categoria) 
+        public ActionResult Post([FromBody] CategoriaDTO categoriaDTO) 
         {
+            var categoria = _mapper.Map<Categoria>(categoriaDTO);
             _uof.CategoriaRepository.Add(categoria);
             _uof.Commit();
 
+            categoriaDTO = _mapper.Map<CategoriaDTO>(categoria);
+
             return new CreatedAtRouteResult("ObterCategoria",
-                new {id = categoria.CategoriaId}, categoria);
+                new {id = categoria.CategoriaId}, categoriaDTO);
         }
 
         [HttpPut("{id}")]
-        public ActionResult Put(int id,[FromBody] Categoria categoria)
+        public ActionResult Put(int id,[FromBody] CategoriaDTO categoriaDTO)
         {           
             try
             {
-                if (id != categoria.CategoriaId)            
+                if (id != categoriaDTO.CategoriaId)            
                     return BadRequest($"Não foi possível atualizar a categoria com o Id={id}");
             
+                var categoria = _mapper.Map<Categoria>(categoriaDTO);            
                 _uof.CategoriaRepository.Update(categoria);
                 _uof.Commit();
                 return Ok($"Categoria com Id={id} foi atualizada com sucesso"); 
