@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using APICatalogo.Context;
 using APICatalogo.Models;
 using APICatalogo.Pagination;
 using APICatalogo.Repository.API;
+using Microsoft.EntityFrameworkCore;
 
 namespace APICatalogo.Repository.Impl
 {
@@ -13,9 +15,9 @@ namespace APICatalogo.Repository.Impl
         {            
         }
 
-        public PagedList<Produto> GetProdutos(QueryStringParameters produtosParameters)
+        public async Task<PagedList<Produto>> GetProdutos(QueryStringParameters produtosParameters)
         {
-            return PagedList<Produto>.ToPagedList(Get().OrderBy(no => no.ProdutoId), 
+            return await PagedList<Produto>.ToPagedList(Get().OrderBy(no => no.ProdutoId), 
                 produtosParameters.PageNumber, 
                 produtosParameters.PageSize);
             
@@ -26,9 +28,9 @@ namespace APICatalogo.Repository.Impl
                 .ToList();*/
         }
 
-        public IEnumerable<Produto> GetProdutosPorPreco()
+        public async Task<IEnumerable<Produto>> GetProdutosPorPreco()
         {
-            return Get().OrderBy(c => c.Preco).ToList();
+            return await Get().OrderBy(c => c.Preco).ToListAsync();
         }
     }
 }

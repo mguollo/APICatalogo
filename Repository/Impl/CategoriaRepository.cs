@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using APICatalogo.Context;
 using APICatalogo.Models;
 using APICatalogo.Pagination;
@@ -13,17 +14,16 @@ namespace APICatalogo.Repository.Impl
         public CategoriaRepository(AppDbContext contexto) : base(contexto)
         {}
 
-        public PagedList<Categoria> GetCategoriaPaginacao(QueryStringParameters parameters)
+        public async Task<PagedList<Categoria>> GetCategoriaPaginacao(QueryStringParameters parameters)
         {
-            return PagedList<Categoria>.ToPagedList(
-                Get().OrderBy(x => x.CategoriaId), 
+            return await PagedList<Categoria>.ToPagedList(Get().OrderBy(x => x.CategoriaId), 
                 parameters.PageNumber, 
                 parameters.PageSize);
         }
 
-        public IEnumerable<Categoria> GetCategoriasProdutos()
+        public async Task<IEnumerable<Categoria>> GetCategoriasProdutos()
         {
-            return Get().Include(x => x.Produtos);
+            return await Get().Include(x => x.Produtos).ToListAsync();
         }
     }
 }

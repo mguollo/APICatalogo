@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using APICatalogo.Context;
 using APICatalogo.Repository.API;
 
@@ -30,9 +31,9 @@ namespace APICatalogo.Repository.Impl
             }
         }
 
-        public void Commit()
+        public async Task Commit()
         {
-            _contexto.SaveChanges();
+            await _contexto.SaveChangesAsync();
         }
 
         public void Dispose()
