@@ -1,3 +1,4 @@
+using System.Net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +16,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace APICatalogo.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Bearer")]
     [Route("api/[Controller]")]
     [ApiController]
     public class CategoriasController : ControllerBase
