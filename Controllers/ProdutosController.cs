@@ -9,6 +9,7 @@ using APICatalogo.Models;
 using APICatalogo.Pagination;
 using APICatalogo.Repository.API;
 using AutoMapper;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -16,7 +17,7 @@ using Newtonsoft.Json;
 namespace APICatalogo.Controllers
 {
     [Route("api/[Controller]")]
-    [ApiController]
+    [ApiController]    
     public class ProdutosController : ControllerBase
     {
         //private readonly AppDbContext _contexto;
@@ -68,6 +69,7 @@ namespace APICatalogo.Controllers
 
         [ServiceFilter(typeof(ApiLoggingFilter2))]
         [HttpGet("{id}", Name="ObterProduto")]
+        [EnableCors("PermitirApiRequest")]
         public async Task<ActionResult<ProdutoDTO>> Get(int id)
         {
             //throw new Exception("Expcetion ao retornar produto pelo ID");

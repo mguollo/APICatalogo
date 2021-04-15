@@ -40,6 +40,14 @@ namespace APICatalogo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+                options.AddPolicy("PermitirApiRequest",
+                    builder => 
+                    builder.WithOrigins("https://apirequest.io").
+                            WithMethods("GET")
+                    )
+            );
+
             services.AddScoped<ApiLoggingFilter>();
             services.AddScoped<ApiLoggingFilter2>();
             string urlConexaoSQL = Configuration.GetConnectionString("DefaultConnection");
@@ -170,6 +178,12 @@ namespace APICatalogo
             app.UseAuthentication();
 
             app.UseAuthorization();
+
+            app.UseCors();
+            /*app.UseCors(c => c.
+                WithOrigins("https://apirequest.io").
+                WithMethods("GET")
+                );*/
 
             app.UseEndpoints(endpoints =>
             {
