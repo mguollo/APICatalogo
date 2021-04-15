@@ -71,3 +71,4 @@ C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\Microsoft.Extensions.I
 C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\Microsoft.Extensions.Identity.Stores.dll
 C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\_appsettings.Staging.json
 C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.Versioning.dll
