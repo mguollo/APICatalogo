@@ -9,6 +9,7 @@ using APICatalogo.Models;
 using APICatalogo.Pagination;
 using APICatalogo.Repository.API;
 using AutoMapper;
+using Microsoft.AspNet.OData;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ using Newtonsoft.Json;
 
 namespace APICatalogo.Controllers
 {
+    [EnableQuery]
     [Route("api/[Controller]")]
     [ApiController]    
     public class ProdutosController : ControllerBase

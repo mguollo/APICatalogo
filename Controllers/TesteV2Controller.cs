@@ -4,7 +4,7 @@ namespace APICatalogo.Controllers
 {
     [ApiVersion("2.0")]
     //[Route("api/v{v:apiVersion}/teste")]
-    [Route("api/teste")]
+    [Route("api/teste1")]
     [ApiController]
     public class TesteV2Controller
     {
