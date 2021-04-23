@@ -76,3 +76,6 @@ C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\Microsoft.AspNetCore.O
 C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\Microsoft.OData.Core.dll
 C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\Microsoft.OData.Edm.dll
 C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\Microsoft.Spatial.dll
+C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\GraphQL.dll
+C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\GraphQL-Parser.dll
+C:\Projetos\webapi_essential\APICatalogo\bin\Debug\net5.0\GraphQL.SystemTextJson.dll

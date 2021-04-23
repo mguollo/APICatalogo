@@ -17,6 +17,7 @@ using Newtonsoft.Json;
 
 namespace APICatalogo.Controllers
 {
+    [EnableCors("PermitirApiRequest")]	 
     [EnableQuery]
     [Route("api/[Controller]")]
     [ApiController]    

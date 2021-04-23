@@ -29,6 +29,43 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
+      "GraphQL/4.4.0": {
+        "type": "package",
+        "dependencies": {
+          "GraphQL-Parser": "7.1.0",
+          "Microsoft.CSharp": "4.7.0",
+          "System.ComponentModel.Annotations": "4.7.0",
+          "System.Runtime.CompilerServices.Unsafe": "4.7.1"
+        },
+        "compile": {
+          "lib/netstandard2.1/GraphQL.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/GraphQL.dll": {}
+        }
+      },
+      "GraphQL-Parser/7.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/GraphQL-Parser.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/GraphQL-Parser.dll": {}
+        }
+      },
+      "GraphQL.SystemTextJson/4.4.0": {
+        "type": "package",
+        "dependencies": {
+          "GraphQL": "4.4.0",
+          "System.Text.Json": "4.7.2"
+        },
+        "compile": {
+          "lib/netstandard2.1/GraphQL.SystemTextJson.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/GraphQL.SystemTextJson.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -1266,6 +1303,15 @@
           }
         }
       },
+      "System.Runtime.CompilerServices.Unsafe/4.7.1": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+        }
+      },
       "System.Runtime.Extensions/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -1511,7 +1557,7 @@
           "ref/netstandard1.3/_._": {}
         }
       },
-      "System.Text.Json/4.6.0": {
+      "System.Text.Json/4.7.2": {
         "type": "package",
         "compile": {
           "lib/netcoreapp3.0/System.Text.Json.dll": {}
@@ -1716,6 +1762,54 @@
         "automapper.extensions.microsoft.dependencyinjection.nuspec",
         "icon.png",
         "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll"
+      ]
+    },
+    "GraphQL/4.4.0": {
+      "sha512": "2cuDOoh/rRUE7y26S+PmGETTVZqM3EehLIObPL8/rmb9HMlR7rMAwxXyZagi5mmZ5eaRxCZMduLKpQfP1wg5mw==",
+      "type": "package",
+      "path": "graphql/4.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "graphql.4.4.0.nupkg.sha512",
+        "graphql.nuspec",
+        "lib/netstandard2.0/GraphQL.dll",
+        "lib/netstandard2.0/GraphQL.xml",
+        "lib/netstandard2.1/GraphQL.dll",
+        "lib/netstandard2.1/GraphQL.xml",
+        "logo.64x64.png"
+      ]
+    },
+    "GraphQL-Parser/7.1.0": {
+      "sha512": "jIF/+BihzkDsLhRSTZj8OQfumjRIPiBPy/KsPPqPmxcBJz3dPzd3e4m1MrCtOjaMtRR88isfB22c2V+6S3ig7g==",
+      "type": "package",
+      "path": "graphql-parser/7.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "graphql-parser.7.1.0.nupkg.sha512",
+        "graphql-parser.nuspec",
+        "lib/netstandard2.0/GraphQL-Parser.dll",
+        "lib/netstandard2.0/GraphQL-Parser.xml",
+        "lib/netstandard2.1/GraphQL-Parser.dll",
+        "lib/netstandard2.1/GraphQL-Parser.xml",
+        "logo.64x64.png"
+      ]
+    },
+    "GraphQL.SystemTextJson/4.4.0": {
+      "sha512": "qMdkNFRfeSHsXON1k2fusZmoqiaA2hrdc52df2xLURSBP19lag8SiLcV2oOFLQzT5on9kvl2x0v7FTNvo66y/w==",
+      "type": "package",
+      "path": "graphql.systemtextjson/4.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "graphql.systemtextjson.4.4.0.nupkg.sha512",
+        "graphql.systemtextjson.nuspec",
+        "lib/netstandard2.0/GraphQL.SystemTextJson.dll",
+        "lib/netstandard2.0/GraphQL.SystemTextJson.xml",
+        "lib/netstandard2.1/GraphQL.SystemTextJson.dll",
+        "lib/netstandard2.1/GraphQL.SystemTextJson.xml",
+        "logo.64x64.png"
       ]
     },
     "Humanizer.Core/2.8.26": {
@@ -4692,6 +4786,36 @@
         "version.txt"
       ]
     },
+    "System.Runtime.CompilerServices.Unsafe/4.7.1": {
+      "sha512": "zOHkQmzPCn5zm/BH+cxC1XbUS3P4Yoi3xzW7eRgVpDR2tPGSzyMZ17Ig1iRkfJuY0nhxkQQde8pgePNiA7z7TQ==",
+      "type": "package",
+      "path": "system.runtime.compilerservices.unsafe/4.7.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/net461/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netcoreapp2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "lib/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/net461/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/net461/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard1.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll",
+        "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.xml",
+        "system.runtime.compilerservices.unsafe.4.7.1.nupkg.sha512",
+        "system.runtime.compilerservices.unsafe.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
+      ]
+    },
     "System.Runtime.Extensions/4.3.0": {
       "sha512": "guW0uK0fn5fcJJ1tJVXYd7/1h5F+pea1r7FLSOz/f8vPEqbR2ZAknuRDvTQ8PzAilDveOxNjSfr0CHfIQfFk8g==",
       "type": "package",
@@ -5546,13 +5670,14 @@
         "system.text.encoding.extensions.nuspec"
       ]
     },
-    "System.Text.Json/4.6.0": {
-      "sha512": "4F8Xe+JIkVoDJ8hDAZ7HqLkjctN/6WItJIzQaifBwClC7wmoLSda/Sv2i6i1kycqDb3hWF4JCVbpAweyOKHEUA==",
+    "System.Text.Json/4.7.2": {
+      "sha512": "TcMd95wcrubm9nHvJEQs70rC0H/8omiSGGpU4FQ/ZA1URIqD4pjmFJh2Mfv1yH1eHgJDWTi2hMDXwTET+zOOyg==",
       "type": "package",
-      "path": "system.text.json/4.6.0",
+      "path": "system.text.json/4.7.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "Icon.png",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net461/System.Text.Json.dll",
@@ -5561,7 +5686,7 @@
         "lib/netcoreapp3.0/System.Text.Json.xml",
         "lib/netstandard2.0/System.Text.Json.dll",
         "lib/netstandard2.0/System.Text.Json.xml",
-        "system.text.json.4.6.0.nupkg.sha512",
+        "system.text.json.4.7.2.nupkg.sha512",
         "system.text.json.nuspec",
         "useSharedDesignerContext.txt",
         "version.txt"
@@ -6085,6 +6210,8 @@
     "net5.0": [
       "AutoMapper >= 10.1.1",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 8.1.1",
+      "GraphQL >= 4.4.0",
+      "GraphQL.SystemTextJson >= 4.4.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.5",
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.3",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 5.0.3",
@@ -6143,6 +6270,14 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": {
             "target": "Package",
             "version": "[8.1.1, )"
+          },
+          "GraphQL": {
+            "target": "Package",
+            "version": "[4.4.0, )"
+          },
+          "GraphQL.SystemTextJson": {
+            "target": "Package",
+            "version": "[4.4.0, )"
           },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",

@@ -29,6 +29,7 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.AspNet.OData.Extensions;
 using Microsoft.AspNet.OData.Formatter;
 using Microsoft.Net.Http.Headers;
+using APICatalogo.GraphQL;
 
 namespace APICatalogo
 {
@@ -213,6 +214,9 @@ namespace APICatalogo
                 WithOrigins("https://apirequest.io").
                 WithMethods("GET")
                 );*/
+
+            //nao esta funcionando - TODO
+            //app.UseMiddleware<TesteGraphQLMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {

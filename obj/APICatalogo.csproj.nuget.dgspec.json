@@ -48,6 +48,14 @@
               "target": "Package",
               "version": "[8.1.1, )"
             },
+            "GraphQL": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
+            "GraphQL.SystemTextJson": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[5.0.5, )"
